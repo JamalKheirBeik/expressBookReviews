@@ -20,7 +20,7 @@ public_users.post("/register", (req, res) => {
 
 // Get the book list available in the shop
 public_users.get("/", function (req, res) {
-  let myPromise = new Promise((resolve, reject) => {
+  const myPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(books);
     }, 2000);
