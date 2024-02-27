@@ -56,20 +56,22 @@ public_users.get("/isbn/:isbn", function (req, res) {
 // Get book details based on author
 public_users.get("/author/:author", function (req, res) {
   const myPromise = new Promise((resolve, reject) => {
-    const { author } = req.params;
+    setTimeout(() => {
+      const { author } = req.params;
 
-    if (!author) reject({ message: "Bad request" });
+      if (!author) reject({ message: "Bad request" });
 
-    const result = [];
-    const authorLC = author.toLowerCase();
+      const result = [];
+      const authorLC = author.toLowerCase();
 
-    for (let book of Object.values(books)) {
-      if (book.author.toLowerCase().includes(authorLC)) result.push(book);
-    }
+      for (let book of Object.values(books)) {
+        if (book.author.toLowerCase().includes(authorLC)) result.push(book);
+      }
 
-    if (result.length === 0) reject({ message: "Book not found" });
+      if (result.length === 0) reject({ message: "Book not found" });
 
-    resolve(result);
+      resolve(result);
+    }, 2000);
   });
 
   myPromise
@@ -84,20 +86,22 @@ public_users.get("/author/:author", function (req, res) {
 // Get all books based on title
 public_users.get("/title/:title", function (req, res) {
   const myPromise = new Promise((resolve, reject) => {
-    const { title } = req.params;
+    setTimeout(() => {
+      const { title } = req.params;
 
-    if (!title) reject({ message: "Bad request" });
+      if (!title) reject({ message: "Bad request" });
 
-    const result = [];
-    const titleLC = title.toLowerCase();
+      const result = [];
+      const titleLC = title.toLowerCase();
 
-    for (let book of Object.values(books)) {
-      if (book.title.toLowerCase().includes(titleLC)) result.push(book);
-    }
+      for (let book of Object.values(books)) {
+        if (book.title.toLowerCase().includes(titleLC)) result.push(book);
+      }
 
-    if (result.length === 0) reject({ message: "Book not found" });
+      if (result.length === 0) reject({ message: "Book not found" });
 
-    resolve(result);
+      resolve(result);
+    }, 2000);
   });
 
   myPromise
